@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- link s -->
-    <title>✨ TodoApp - Kelola Tugas dengan Mudah</title>
+    <title>✨ TodoApp - Kelola Tugas Kamu dengan Mudah</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/all.css">
+    <link rel="stylesheet" href="./assets/all.css" />
+    <link rel="stylesheet" href="./assets/untukanimasi.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <!-- link -->
   </head>
   <body>
@@ -18,11 +23,12 @@
     </button>
 
     <!-- Login/Register Section -->
-    <div id="authSection" class="auth-section">
+    <div id="authSection" class="auth-section animate__animated animate__rollIn" style="--animate-duration: 3s; animation-delay: 1s">
       <div class="auth-container">
         <div class="auth-header">
-          <h1 class="auth-title">✨ TodoApp</h1>
-          <p class="auth-subtitle">Kelola tugas-tugas kamu dengan mudah dan menyenangkan!</p>
+          <h1 class="auth-title">✨ TaskIt</h1>
+          <p class="auth-subtitle">List tugas kamu</p>
+          <p class="auth-subtitle">Versi Cerdas dan Cepat 🏆</p>
         </div>
 
         <div class="auth-tabs">
@@ -78,6 +84,7 @@
         </div>
       </div>
     </div>
+    <!-- sambungan atas -->
 
     <!-- Dashboard Section -->
     <div id="dashboardSection" class="dashboard-section" style="display: none">
@@ -89,7 +96,7 @@
               <i class="fas fa-user"></i>
             </div>
             <div class="user-details">
-              <h1 id="welcomeMessage">Halo, User! 👋</h1>
+              <h1 id="welcomeMessage">Halo, User! 🤗👋</h1>
               <p>Mari selesaikan tugas-tugas hari ini</p>
             </div>
           </div>
@@ -198,11 +205,10 @@
     </div>
     <!-- ahkir -->
 
-
-
     <!-- js -->
     <script src="./assets/semua.js"></script>
     <script src="./assets/database.js"></script>
+    <script src="./assets/animasiGSAP.js"></script>
     <!-- end js -->
   </body>
 </html>
