@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- link s -->
+    <title>✨ TodoApp - Kelola Tugas dengan Mudah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- link -->
+  </head>
+  <body>
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Login/Register Section -->
+    <div id="authSection" class="auth-section">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1 class="auth-title">✨ TodoApp</h1>
+          <p class="auth-subtitle">Kelola tugas-tugas kamu dengan mudah dan menyenangkan!</p>
+        </div>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Login</button>
+          <button class="auth-tab" data-tab="register">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+          <div class="input-group">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="loginEmail" placeholder="Email" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="loginPassword" placeholder="Password" required />
+          </div>
+          <button type="submit" class="auth-btn login-btn">
+            <span class="btn-text">Masuk</span>
+            <div class="loading-spinner" style="display: none">
+              <i class="fas fa-spinner fa-spin"></i>
+            </div>
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form">
+          <div class="input-group">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" id="registerUsername" placeholder="Username" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" id="registerEmail" placeholder="Email" required />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" id="registerPassword" placeholder="Password" required />
+          </div>
+          <button type="submit" class="auth-btn register-btn">
+            <span class="btn-text">Daftar</span>
+            <div class="loading-spinner" style="display: none">
+              <i class="fas fa-spinner fa-spin"></i>
+            </div>
+          </button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message" style="display: none">
+          <i class="fas fa-check-circle success-icon"></i>
+          <h2>Berhasil!</h2>
+          <p>Mengarahkan ke dashboard...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboardSection" class="dashboard-section" style="display: none">
+      <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+          <div class="user-info">
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="user-details">
+              <h1 id="welcomeMessage">Halo, User! 👋</h1>
+              <p>Mari selesaikan tugas-tugas hari ini</p>
+            </div>
+          </div>
+          <button id="logoutBtn" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Keluar
+          </button>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon total">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="totalTasks">0</h3>
+              <p>Total Tugas</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon completed">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="completedTasks">0</h3>
+              <p>Selesai</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon remaining">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-info">
+              <h3 id="remainingTasks">0</h3>
+              <p>Tersisa</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Card -->
+        <div class="progress-card">
+          <div class="progress-header">
+            <h3>Progress Hari Ini</h3>
+            <span id="progressPercentage" class="progress-badge">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <p id="progressText" class="progress-text">0 dari 0 tugas selesai</p>
+        </div>
+
+        <!-- Add Todo -->
+        <div class="add-todo-card">
+          <div class="add-todo-form">
+            <input type="text" id="newTodoInput" placeholder="Tambah tugas baru..." maxlength="200" />
+            <button id="addTodoBtn" class="add-btn">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">Semua</button>
+          <button class="filter-tab" data-filter="active">Aktif</button>
+          <button class="filter-tab" data-filter="completed">Selesai</button>
+        </div>
+
+        <!-- Todo List -->
+        <div id="todoList" class="todo-list">
+          <!-- Todos will be inserted here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none">
+          <div class="empty-icon">📝</div>
+          <h3 id="emptyTitle">Belum ada tugas</h3>
+          <p id="emptyMessage">Tambah tugas pertama kamu!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Priority Modal -->
+    <div id="priorityModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Ubah Prioritas</h3>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="priority-options">
+          <button class="priority-btn high" data-priority="high">
+            <i class="fas fa-flag"></i>
+            Prioritas Tinggi
+          </button>
+          <button class="priority-btn medium" data-priority="medium">
+            <i class="fas fa-flag"></i>
+            Prioritas Sedang
+          </button>
+          <button class="priority-btn low" data-priority="low">
+            <i class="fas fa-flag"></i>
+            Prioritas Rendah
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- ahkir -->
+
+
+
+    <!-- js -->
+    <script src="./assets/semua.js"></script>
+    <script src="./assets/database.js"></script>
+    <!-- end js -->
+  </body>
+</html>
