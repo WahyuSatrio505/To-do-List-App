@@ -22,28 +22,26 @@
       <i class="fas fa-moon"></i>
     </button>
 
-<script>
-  window.addEventListener("load", function() {
-    gsap.to("#preloader", {
-      opacity: 0,
-      duration: 1,
-      onComplete: () => {
-        document.getElementById("preloader").style.display = "none";
-      }
-    });
-    // Optionally animasi masuk halaman
-    gsap.from(".main-content", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      delay: 1
-    });
-  });
-</script>
-
+    <script>
+      window.addEventListener("load", function () {
+        gsap.to("#preloader", {
+          opacity: 0,
+          duration: 1,
+          onComplete: () => {
+            document.getElementById("preloader").style.display = "none";
+          },
+        });
+        // Optionally animasi masuk halaman
+        gsap.from(".main-content", {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          delay: 1,
+        });
+      });
+    </script>
 
     <!-- Login/Register Section -->
-     <div class="main-content"></div>
     <div id="authSection" class="auth-section animate__animated animate__rollIn" style="--animate-duration: 3s; animation-delay: 1s">
       <div class="auth-container">
         <div class="auth-header">
@@ -226,6 +224,34 @@
     </div>
     <!-- ahkir -->
 
+    <!-- untuk form -->
+    <section id="feedback" style="padding: 40px; background: rgb(218, 241, 255)">
+      <div style="max-width: 600px; margin: auto">
+        <h2 style="text-align: center; margin-bottom: 20px">💬 Feedback Form</h2>
+        <p style="text-align: center; margin-bottom: 30px">Kami ingin tahu pendapatmu! Kirim saran atau pesanmu di bawah ini 👇</p>
+
+        <form action="https://formspree.io/f/meoeodoe" method="POST">
+          <div style="margin-bottom: 15px">
+            <label for="name">Nama</label><br />
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-top: 5px" />
+          </div>
+
+          <div style="margin-bottom: 15px">
+            <label for="email">Email</label><br />
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-top: 5px" />
+          </div>
+
+          <div style="margin-bottom: 15px">
+            <label for="message">Pesan / Saran</label><br />
+            <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; margin-top: 5px"></textarea>
+          </div>
+
+          <button type="submit" style="padding: 12px 20px; background-color: #3498db; color: white; border: none; cursor: pointer">Kirim Feedback 🚀</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- form -->
     <!-- js -->
     <script src="./assets/semua.js"></script>
     <script src="./assets/database.js"></script>
